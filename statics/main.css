@@ -13,8 +13,7 @@ body{
 }
 .navBar{
     display: flex;
-    padding-left: 2%;
-    padding-right: 2%;
+    padding: 0 5% 0 3%;
     color: white;
     font-size: 20px;
     height: 100px;
@@ -48,9 +47,97 @@ body{
 }
 .home-link{
     border: solid 2px;
-    padding: 3px;
+    padding: 8px;
 }
 .right-nav{
     display: flex;
     flex-direction: row;
+}
+.heading{
+    width: auto;
+    text-align: center;
+    font-size: 460%;
+    color: white;
+    margin: 20px 0 20px 0;
+}
+.heading-content{
+    margin-left: 5%;
+    width: 90%;
+    text-align: center;
+    justify-items: center;
+    color: white;
+}
+.section-home{
+    padding-bottom: 30px;
+}
+.home-button{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.home-button a{
+    margin: 5px;
+}
+.btn{
+    color: white;
+    text-decoration: none;
+    font-size: medium;
+    padding: 20px 3% 20px 3%;
+    height: auto;
+}
+.btn-primary{
+    background-color: #2980b9;
+    transition: .2s;
+}
+.btn-primary:hover{
+    background-color: black;
+}
+.btn-primary:focus{
+    background-color: #5b5b5b;
+}
+
+.site-stats{
+    display: flex;
+    flex-direction: row;
+    padding: 50px 30px 50px 30px;
+    justify-content: space-between;
+}
+.stats{
+    width: 18%;
+    text-align: center;
+    justify-content: center;
+}
+.stats h1{
+    font-size: 60px;
+    font-weight: bold;
+    font-family: "Arial Black", serif;
+    color: #2980b9;
+    padding: 0;
+}
+.stats p{
+    font-size: 20px;
+    font-weight: bold;
+}
+.footer-join{
+    font-size: 80px;
+    font-weight: bold;
+    color: white;
+    background-color: #2980b9;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.join-btn{
+    font-size: medium;
+    color: white;
+    border: solid 2px white;
+    text-decoration: none;
+    text-align: center;
+    padding: 20px;
+    transition: .2s;
+}
+.join-btn:hover{
+    background-color: black;
+    border: none;
 }

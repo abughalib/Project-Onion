@@ -1,6 +1,11 @@
 {
   "name": "Project-Onion",
   "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo Test not available"
+  },
   "dependencies": {
     "express": "^4.17.1",
     "ejs": "^3.1.5"

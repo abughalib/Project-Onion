@@ -1,11 +1,14 @@
 const express = require('express')
-const fs = require('fs')
+const path = require('path')
 
 const app = express()
 
 app.set('view engine', 'ejs')
-app.set('views', 'public')
-app.use('/statics', express.static('statics'))
+app.set('views', '../public')
+let root = path.join(__dirname, '../')
+let staticDir = path.join(root, 'statics');
+console.log(staticDir)
+app.use('/statics', express.static(staticDir))
 
 app.get('/', (req, res)=>{
 	res.render('index')

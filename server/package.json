@@ -7,7 +7,8 @@
     "test": "echo Test not available"
   },
   "dependencies": {
+    "ejs": "^3.1.5",
     "express": "^4.17.1",
-    "ejs": "^3.1.5"
+    "sqlite3": "^5.0.0"
   }
 }

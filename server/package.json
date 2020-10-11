@@ -1,5 +1,5 @@
 {
-  "name": "Project-Onion",
+  "name": "project-onion",
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
@@ -9,6 +9,8 @@
   "dependencies": {
     "ejs": "^3.1.5",
     "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "pbkdf2-password": "^1.2.1",
     "sqlite3": "^5.0.0"
   }
 }

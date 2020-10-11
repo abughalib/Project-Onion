@@ -18,7 +18,7 @@ app.use((req, res, next)=>{
 	next();
 })
 
-function registration(username, password){
+export function registration(username, password){
 	hash({password: password}, (err, pass, salt, hash)=>{
 		if(err) throw err;
 		// Dummy database for now.
@@ -30,7 +30,7 @@ function registration(username, password){
 	});
 }
 
-function authenticate(username, password, fun){
+export function authenticate(username, password, fun){
 	if(!module.parent) console.log("Authenticating as %s:%s", username, password);
 	//Dummy database for now
 	let users = {

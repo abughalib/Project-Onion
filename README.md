@@ -12,10 +12,10 @@
 
 **Run**<br>
 
-`
-git clone https://github.com/abughalib/Project-Onion`<br>
-`cd Project-Onion`<br>
-`cd server`<br>
-`npm install`<br>
-`npm start
-`<br>
+```
+git clone https://github.com/abughalib/Project-Onion
+cd Project-Onion
+cd server
+npm install
+npm start
+```

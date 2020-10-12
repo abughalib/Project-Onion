@@ -4,7 +4,7 @@ const auth = require('./auth')
 router.get('/login', (req, res)=>{
 	res.render('login')
 });
-router.post('/login', (req, res)=>{
+router.post('/login', auth.notAuth, (req, res)=>{
 	let login_info = {
 		username: req.username,
 		password: req.password
@@ -25,21 +25,13 @@ router.post('/login', (req, res)=>{
 		}
 	})
 })
-router.get('/register', (req, res)=>{
+router.get('/register', auth.notAuth, (req, res)=>{
 	res.render('register')
 })
 
-function requireAuth(req, res, next){
-	if(req.session.user){
-		next()
-	}else{
-		req.session.error = "Access denied";
-		res.redirect('/login')
-	}
-}
-
-router.get('/profile', requireAuth, (req, res)=>{
+router.get('/profile', auth.requireAuth, (req, res)=>{
 	res.render('profile')
 });
+
 
 module.exports = router

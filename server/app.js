@@ -3,6 +3,7 @@ const session = require('express-session')
 const path = require('path')
 const home_router = require('./Routers/home_router')
 const users_router = require('./Routers/user_router')
+const post_router = require('./Routers/post_router')
 
 const app = express()
 
@@ -11,7 +12,6 @@ app.set('views', '../public')
 
 app.use(session({
 	resave: false,
-	saveUninitialized: false,
 	secret: "hja&*%&^9jh_lgi*adi3&m3^&o9k23hii**(hi43jkl4()*()&)&%$#%$^&*()__+(&%#@!@!~"
 }))
 
@@ -32,6 +32,7 @@ app.use('/statics', express.static(staticDir))
 
 
 app.use('/users', users_router)
+app.use('/post', post_router)
 app.use('', home_router)
 
 console.log("http://localhost:8080");

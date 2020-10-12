@@ -29,5 +29,24 @@ function authenticate(username, password, fun){
 	})
 }
 
+function requireAuth(req, res, next){
+	if(req.session.user){
+		next()
+	}else{
+		req.session.error = "Access denied";
+		res.redirect('/users/login')
+	}
+}
+function notAuth(req, res, next){
+	if(req.session.user){
+		req.session.error = "Registered Already";
+		res.redirect('/users/profile')
+	}else{
+		next()
+	}
+}
+
 exports.registration = registration
 exports.authenticate = authenticate
+exports.requireAuth = requireAuth
+exports.notAuth = notAuth

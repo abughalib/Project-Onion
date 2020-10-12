@@ -1,12 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-us">
 <head>
-    <meta charset="UTF-8">
-    <title>Login</title>
+    <link rel="icon" href="../statics/icon.png"/>
+    <title>Camera Express</title>
+    <link rel="stylesheet" type="text/css" href="../statics/bootstrap.min.css">
 </head>
 <body>
 
-<h1>Login here</h1>
+<div class="container">
+    <h1>Login</h1>
+<form class="form-group" method="post" action="/users/login">
+    <label>
+        Email: <input type="email" placeholder="Enter your email..." name="username" id="username" class="form-control"/>
+    </label><br>
+    <label>
+        Password: <input type="password" placeholder="Enter your password..." name="password" id="password" class="form-control"/>
+    </label><br>
+        <input type="submit" class="btn btn-success" />
+</form>
 
+</div>
+
+<script src="../statics/bootstrap.min.js"></script>
+<script src="../statics/jquery-ui.min.js"></script>
 </body>
 </html>

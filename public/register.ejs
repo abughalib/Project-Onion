@@ -1,12 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-us">
 <head>
-    <meta charset="UTF-8">
-    <title>Register</title>
+    <link rel="icon" href="../statics/icon.png"/>
+    <title>Camera Express</title>
+    <link rel="stylesheet" type="text/css" href="../statics/bootstrap.min.css">
 </head>
 <body>
 
-<h1>Register here</h1>
+<div class="container">
+    <h1>Register</h1>
+    <form class="form-group" method="post" action="/users/register">
+        <label>
+            Full Name: <input type="text" placeholder="Enter your Full Name..." name="name" id="name" class="form-control"/>
+        </label><br>
+        <label>
+            Email: <input type="email" placeholder="Enter your email..." name="username" id="email" class="form-control"/>
+        </label><br>
+        <label>
+            Phone: <input type="number" placeholder="Enter your Phone No. ..." name="phone" id="phone" class="form-control"/>
+        </label><br>
+        <label>
+            Role: <input type="text" placeholder="Enter your Role..." name="role" id="role" class="form-control"/>
+        </label><br>
+        <label>
+            Instagram ID: <input type="text" placeholder="Enter your instagram ID..." name="insta_id" id="insta_id" class="form-control"/>
+        </label><br>
+        <label>
+            Pic: <input type="file" name="file_in" id="file_in" class="form-control-file"/>
+        </label><br>
+        <label>
+            Password: <input type="password" placeholder="Enter your password..." name="password1" id="password1" class="form-control"/>
+        </label><br>
+        <label>
+            Confirm Password: <input type="password" placeholder="Enter your password..." name="password2" id="password2" class="form-control"/>
+        </label><br>
+        <input type="submit" class="btn btn-primary" />
+        <input type="reset" class="btn btn-secondary" />
+    </form>
 
+</div>
+
+<script src="../statics/bootstrap.min.js"></script>
+<script src="../statics/jquery-ui.min.js"></script>
 </body>
 </html>

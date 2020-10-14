@@ -1,16 +1,15 @@
 const hash = require('pbkdf2-password')()
 const sqlite = require('sqlite3')
 
-function registration(req, res){
+function registration(req, res, fun){
 	let db = new sqlite.Database('../database/database.db', sqlite.OPEN_READWRITE , (err)=>{
-		if(err) throw err;
-		console.log("Connected to database for reading & writing!");
+		if(err) console.log("Error in opening database");
 	})
 	hash({password: req.body.password1}, (err, pass, salt, hash)=>{
-		if(err) throw err;
+		if(err) fun(new Error("Cannot hash password"))
 
 		db.all(`INSERT INTO users(name, email, phone, role, password, salt, insta_id) 
-values('${req.body.name}', '${req.body.email}', '${req.body.phone}', '${req.body.role}', '${hash}', '${salt}', '${req.body.insta_id}')`, [], (err, rows)=>{
+values('${req.body.name}', '${req.body.email}', '${req.body.phone}', '${req.body.role}', '${hash}', '${salt}', '${req.body.insta_id}')`, [], (err)=>{
 
 			if(err) throw err;
 			console.log("Registered!")
@@ -23,7 +22,6 @@ function authenticate(username, password, fun){
 
 	let db = new sqlite.Database('../database/database.db', (err)=>{
 		if(err) throw err;
-		console.log("Connected to database for reading!");
 	})
 	db.all(`SELECT * from users WHERE email='${username}'`, (err, rows)=>{
 		if(err) return fun(new Error("User not found!"))

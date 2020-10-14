@@ -5,11 +5,7 @@ router.get('/login', (req, res)=>{
 	res.render('login')
 });
 router.post('/login', auth.notAuth, (req, res)=>{
-	let login_info = {
-		username: req.username,
-		password: req.password
-	}
-	console.log(login_info)
+	console.log(`${req.body.username}\n${req.body.password}`)
 	auth.authenticate(req.body.username, req.body.password, (err, user)=>{
 		if(user){
 
@@ -17,16 +13,19 @@ router.post('/login', auth.notAuth, (req, res)=>{
 				req.session.user = user;
 				req.session.success = "Authenticated as "+user.name;
 				//later using database and shadow user.
-				res.redirect(200, `/user/profile/:${user}`)
+				res.redirect(200, `/users/profile`)
 			})
 		}else{
 			req.session.error = "Authentication Failed, Check credential";
-			res.redirect('/users/login')
+			res.redirect(400, '/users/login')
 		}
 	})
 })
 router.get('/register', auth.notAuth, (req, res)=>{
 	res.render('register')
+})
+router.post('/register', auth.notAuth, (req, res)=>{
+	auth.registration(req, res)
 })
 
 router.get('/profile', auth.requireAuth, (req, res)=>{

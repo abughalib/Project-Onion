@@ -9,9 +9,11 @@ const app = express()
 
 app.set('view engine', 'ejs')
 app.set('views', '../public')
+app.use(express.urlencoded({extended: false}))
 
 app.use(session({
 	resave: false,
+	saveUninitialized: false,
 	secret: "hja&*%&^9jh_lgi*adi3&m3^&o9k23hii**(hi43jkl4()*()&)&%$#%$^&*()__+(&%#@!@!~"
 }))
 

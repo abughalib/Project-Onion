@@ -1,22 +1,23 @@
 const router = require('express').Router();
 const auth = require('./auth')
 
-router.get('/login', (req, res)=>{
+router.get('/login', auth.notAuth, (req, res)=>{
 	res.render('login')
 });
 router.post('/login', auth.notAuth, (req, res)=>{
 	console.log(`${req.body.username}\n${req.body.password}`)
 	auth.authenticate(req.body.username, req.body.password, (err, user)=>{
 		if(user){
-
 			req.session.regenerate(()=>{
 				req.session.user = user;
 				req.session.success = "Authenticated as "+user.name;
+
 				//later using database and shadow user.
 				res.redirect(200, `/users/profile`)
 			})
 		}else{
 			req.session.error = "Authentication Failed, Check credential";
+			console.log("Authentication Failed, Check credential")
 			res.redirect(400, '/users/login')
 		}
 	})

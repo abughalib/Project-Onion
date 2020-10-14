@@ -21,26 +21,19 @@ values('${req.body.name}', '${req.body.email}', '${req.body.phone}', '${req.body
 
 function authenticate(username, password, fun){
 
-	let db = new sqlite.Database('../database/database.db', sqlite.OPEN_READ , (err)=>{
+	let db = new sqlite.Database('../database/database.db', (err)=>{
 		if(err) throw err;
 		console.log("Connected to database for reading!");
 	})
-
-	if(!module.parent) console.log("Authenticating as %s:%s", username, password);
-	//Dummy database for now
-	let users = {};
 	db.all(`SELECT * from users WHERE email='${username}'`, (err, rows)=>{
-		if(err) throw err;
-		users = rows[0];
+		if(err) return fun(new Error("User not found!"))
+		hash({password: password, salt: rows[0].salt}, (err, pass, salt, hash)=>{
+			if(err) throw err;
+			if(hash === rows[0].password) return fun(null, rows[0])
+			fun(new Error("Invalid password!"))
+		})
 	})
-	let user = users[username];
-	if(!user) return fun(new Error('User not found!'));
 
-	hash({password: password, salt: user.salt}, (err, pass, salt, hash)=>{
-		if(err) throw err;
-		if(hash === user.hash) return fun(null, user)
-		fun (new Error("Invalid password"))
-	})
 }
 
 function requireAuth(req, res, next){
@@ -53,7 +46,7 @@ function requireAuth(req, res, next){
 }
 function notAuth(req, res, next){
 	if(req.session.user){
-		req.session.error = "Registered Already";
+		req.session.error = "Logged in Already";
 		res.redirect('/users/profile')
 	}else{
 		next()

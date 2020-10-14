@@ -37,7 +37,7 @@ app.use('/users', users_router)
 app.use('/post', post_router)
 app.use('', home_router)
 
-console.log("http://localhost:8080");
 app.listen(8080, (err)=>{
 	if(err) console.log(err);
+	console.log("http://localhost:8080");
 });
